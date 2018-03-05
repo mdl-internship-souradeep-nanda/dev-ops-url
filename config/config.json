@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "souradeepnanda",
+    "password": null,
+    "database": "devopsurl_dev",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "souradeepnanda",
+    "password": null,
+    "database": "devopsurl_test",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "souradeepnanda",
+    "password": null,
+    "database": "devopsurl_production",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}

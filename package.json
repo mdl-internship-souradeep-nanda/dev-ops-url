@@ -4,7 +4,9 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "createdb": "NODE_ENV=dev sequelize db:create && NODE_ENV=test sequelize db:create",
+    "migratedb": "NODE_ENV=dev sequelize db:migrate && NODE_ENV=test sequelize db:migrate"
   },
   "author": "",
   "license": "ISC",
