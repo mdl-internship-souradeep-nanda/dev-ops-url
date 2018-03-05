@@ -13,6 +13,8 @@ module.exports = [
         },
       }).then((obj) => {
         response({ longurl: obj.longurl });
+      }).catch(() => {
+        response({ longurl: '' });
       });
     },
   },

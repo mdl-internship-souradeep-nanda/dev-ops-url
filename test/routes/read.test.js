@@ -19,4 +19,16 @@ describe('The read route should', () => {
         done();
       }));
   });
+  it('take a short url and return empty string if it does not exist', (done) => {
+    const longurl = 'http://doesnotexist.com';
+    const shorturl = md5(longurl).substring(0, 6);
+    supertest(server.listener)
+      .get('/read')
+      .query({ shorturl })
+      .expect(200)
+      .then((res) => {
+        expect(res.body.longurl).toBe('');
+        done();
+      });
+  });
 });
