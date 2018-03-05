@@ -1,5 +1,7 @@
 const md5 = require('md5');
 
+const models = require('../../models');
+
 module.exports = [
   {
     path: '/write',
@@ -7,7 +9,12 @@ module.exports = [
     handler: (request, response) => {
       const { longurl } = request.query;
       const shorturl = md5(longurl).substring(0, 6);
-      response({ shorturl });
+      models.shorturls.upsert({
+        longurl,
+        shorturl,
+      }).then(() => {
+        response({ shorturl });
+      });
     },
   },
 ];
