@@ -11,7 +11,7 @@ module.exports = {
     },
     shorturl: {
       type: Sequelize.STRING,
-      unique: true,
+      // unique: true,
     },
     createdAt: {
       allowNull: false,

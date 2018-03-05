@@ -21,6 +21,7 @@
   },
   "dependencies": {
     "hapi": "^16.6.2",
+    "md5": "^2.2.1",
     "sequelize": "^4.34.1"
   }
 }
