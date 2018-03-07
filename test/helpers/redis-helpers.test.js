@@ -14,5 +14,12 @@ describe('The redis helper should be able to', () => {
         done();
       });
   });
+  it('if key does not exist then it should return null', (done) => {
+    getFromRedis('I_HOPE_THIS_KEY_DOES_NOT_EXIST')
+      .then((val) => {
+        expect(val).toBe(null);
+        done();
+      });
+  });
 });
 
