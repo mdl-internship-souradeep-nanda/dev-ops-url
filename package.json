@@ -4,7 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "start": "nodemon src/index.js",
+    "start": "node src/index.js",
     "test": "jest",
     "createdb": "NODE_ENV=dev sequelize db:create && NODE_ENV=test sequelize db:create",
     "migratedb": "NODE_ENV=dev sequelize db:migrate && NODE_ENV=test sequelize db:migrate"
@@ -22,6 +22,9 @@
     "supertest": "^3.0.0"
   },
   "dependencies": {
+    "good": "^7.3.0",
+    "good-console": "^6.4.1",
+    "good-squeeze": "^5.0.2",
     "hapi": "^16.6.2",
     "md5": "^2.2.1",
     "sequelize": "^4.34.1"
