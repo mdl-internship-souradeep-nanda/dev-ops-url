@@ -1,6 +1,7 @@
 const {
   getFromRedis,
   storeIntoRedis,
+  redisFlushdb,
 } = require('../../src/helpers/redis-helpers');
 
 describe('The redis helper should be able to', () => {
@@ -21,5 +22,15 @@ describe('The redis helper should be able to', () => {
         done();
       });
   });
+  it('flushall should flush all records', (done) => {
+    const key = 'key';
+    const value = 'value';
+    storeIntoRedis(key, value)
+      .then(() => redisFlushdb())
+      .then(() => getFromRedis(key))
+      .then((returnedValue) => {
+        expect(returnedValue).toBe(null);
+        done();
+      });
+  });
 });
-
