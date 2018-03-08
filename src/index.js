@@ -33,10 +33,6 @@ server.register({
       }, 'stdout'],
     },
   },
-}, (err) => {
-  if (err) {
-    throw err;
-  }
 });
 
 server.route(routes);
@@ -45,10 +41,7 @@ server.route(routes);
  * Start the server
  */
 if (!module.parent) {
-  server.start((err) => {
-    if (err) {
-      throw err;
-    }
+  server.start(() => {
     console.log(`Server running at: ${server.info.uri}`);
   });
 }

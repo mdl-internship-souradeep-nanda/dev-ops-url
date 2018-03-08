@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node src/index.js",
-    "test": "jest",
+    "test": "jest --forceExit",
+    "coverage": "jest --coverage --forceExit",
     "deploycluster": "pm2 start -i 0 src/index.js",
     "stopcluster": "pm2 stop all && pm2 delete all",
     "createdb": "NODE_ENV=dev sequelize db:create && NODE_ENV=test sequelize db:create",
