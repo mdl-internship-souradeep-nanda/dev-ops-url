@@ -12,6 +12,14 @@
     "createdb": "NODE_ENV=dev sequelize db:create && NODE_ENV=test sequelize db:create",
     "migratedb": "NODE_ENV=dev sequelize db:migrate && NODE_ENV=test sequelize db:migrate"
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/index.js",
+      "!src/routes/index.js",
+      "!models/*"
+    ]
+  },
   "author": "",
   "license": "ISC",
   "devDependencies": {
