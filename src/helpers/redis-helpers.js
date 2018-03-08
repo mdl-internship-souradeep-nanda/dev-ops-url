@@ -3,12 +3,18 @@ const redis = require('redis');
 const client = redis.createClient();
 const { promisify } = require('util');
 
-const getFromRedis = promisify(client.get).bind(client);
-const storeIntoRedis = promisify(client.set).bind(client);
-const redisFlushdb = promisify(client.flushdb).bind(client);
+const FIELD = 'LONG_URL';
+
+const getFromRedis = key =>
+  promisify(client.hget).bind(client)(key, FIELD);
+
+const storeIntoRedis = (key, value) =>
+  promisify(client.hset).bind(client)(key, FIELD, value);
+
+const redisFlushAll = promisify(client.flushall).bind(client);
 
 module.exports = {
   getFromRedis,
   storeIntoRedis,
-  redisFlushdb,
+  redisFlushAll,
 };

@@ -6,14 +6,14 @@ const models = require('../../models');
 
 const {
   storeIntoRedis,
-  redisFlushdb,
+  redisFlushAll,
 } = require('../../src/helpers/redis-helpers');
 
 describe('The read route should take short url and return long url when', () => {
   it('the url is in redis store', (done) => {
     const longurl = 'http://longurl.com';
     const shorturl = md5(longurl).substring(0, 6);
-    redisFlushdb()
+    redisFlushAll()
       .then(() => storeIntoRedis(shorturl, longurl))
       .then(() => supertest(server.listener)
         .get('/read')
@@ -30,7 +30,7 @@ describe('The read route should take short url and return long url when', () => 
     models.shorturls.upsert({
       longurl, shorturl,
     })
-      .then(() => redisFlushdb())
+      .then(() => redisFlushAll())
       .then(() => supertest(server.listener)
         .get('/read')
         .query({ shorturl })

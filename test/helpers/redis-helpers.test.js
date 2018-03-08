@@ -1,7 +1,7 @@
 const {
   getFromRedis,
   storeIntoRedis,
-  redisFlushdb,
+  redisFlushAll,
 } = require('../../src/helpers/redis-helpers');
 
 describe('The redis helper should be able to', () => {
@@ -26,7 +26,7 @@ describe('The redis helper should be able to', () => {
     const key = 'key';
     const value = 'value';
     storeIntoRedis(key, value)
-      .then(() => redisFlushdb())
+      .then(() => redisFlushAll())
       .then(() => getFromRedis(key))
       .then((returnedValue) => {
         expect(returnedValue).toBe(null);
