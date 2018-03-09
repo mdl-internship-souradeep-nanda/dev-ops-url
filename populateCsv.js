@@ -16,7 +16,7 @@ for (let i = 0; i < totalEntries; i += 1) {
   while (map[hash.substring(j, j + shortUrlLength)] !== undefined) {
     j += shortUrlLength;
     if (j + shortUrlLength > hash.length) {
-      console.log('FUCK');
+      // console.log('FUCK');
       break;
     }
   }
@@ -25,9 +25,9 @@ for (let i = 0; i < totalEntries; i += 1) {
   map[hash.substring(j, j + shortUrlLength)] = true;
   // const shorturl = hash.substring(j, j + shortUrlLength);
 
-  if (i % 1e+4 === 0) {
-    console.log(i);
-  }
+  // if (i % 1e+4 === 0) {
+  //   console.log(i);
+  // }
 }
 
 fs.writeFileSync('./output.csv', Object.keys(map).join('\n'));

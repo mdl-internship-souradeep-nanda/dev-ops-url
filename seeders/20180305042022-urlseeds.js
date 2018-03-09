@@ -1,7 +1,7 @@
 const md5 = require('md5');
 
 module.exports = {
-  up: (queryInterface, Sequelize) => {
+  up: (queryInterface) => {
     const urls = [];
     const map = {};
 
@@ -18,7 +18,7 @@ module.exports = {
       while (map[hash.substring(j, j + shortUrlLength)] !== undefined) {
         j += shortUrlLength;
         if (j + shortUrlLength > hash.length) {
-          console.log('FUCK');
+          // console.log('FUCK');
           break;
         }
       }
@@ -31,14 +31,14 @@ module.exports = {
         longurl, shorturl, createdAt: new Date(), updatedAt: new Date(),
       });
 
-      if (i % 1e+4 === 0) {
-        console.log(i);
-      }
+      // if (i % 1e+4 === 0) {
+      //   console.log(i);
+      // }
     }
 
-    console.log('Bulk inserting');
+    // console.log('Bulk inserting');
     return queryInterface.bulkInsert('shorturls', urls, {});
   },
 
-  down: (queryInterface, Sequelize) => queryInterface.bulkDelete('shorturls', null, {}),
+  down: queryInterface => queryInterface.bulkDelete('shorturls', null, {}),
 };

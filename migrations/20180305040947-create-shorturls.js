@@ -22,5 +22,5 @@ module.exports = {
       type: Sequelize.DATE,
     },
   }),
-  down: (queryInterface, Sequelize) => queryInterface.dropTable('shorturls'),
+  down: queryInterface => queryInterface.dropTable('shorturls'),
 };
